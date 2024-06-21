@@ -1,0 +1,12 @@
+.toplevel_page_afzaliwp-wallet {
+	#wallet-users {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.admin-edit-user-wallet-form {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+}

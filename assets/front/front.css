@@ -1,0 +1,39 @@
+.afzaliwp-wallet-wrapper {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	justify-content: space-between;
+	align-items: start;
+
+	.side {
+		width: 30%;
+		border: 1px solid #e2e2e2;
+		background-color: #fff;
+		padding: 10px;
+		border-radius: 10px;
+
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+		}
+	}
+
+	.main {
+		width: 70%;
+		border: 1px solid #e2e2e2;
+		background-color: #fff;
+		padding: 10px;
+		border-radius: 10px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.afzaliwp-wallet-wrapper {
+		flex-direction: column;
+
+		.side, .main {
+			width: 100%;
+		}
+	}
+}
