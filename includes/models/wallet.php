@@ -5,8 +5,12 @@
 //D Delete delete
 
 function afzaliwp_wallet_add( $user_id, $amount, $status = 'pending', $description = '', $payment_info = '' ) {
+	date_default_timezone_set( 'Asia/Tehran' );
+
 	global $wpdb, $table_prefix;
 	$table = $table_prefix . 'afzaliwp_wallet';
+
+	$date_time = new DateTime();
 
 	return $wpdb->insert( $table, [
 		'user_id'      => $user_id,
@@ -14,6 +18,8 @@ function afzaliwp_wallet_add( $user_id, $amount, $status = 'pending', $descripti
 		'status'       => $status,
 		'description'  => $description,
 		'payment_info' => $payment_info,
+		'created_at' => $date_time->format('Y-m-d H:i'),
+		'updated_at' => $date_time->format('Y-m-d H:i'),
 	] );
 }
 
@@ -31,13 +37,17 @@ function afzaliwp_wallet_get( $field = 'all', $value = '' ) {
 }
 
 function afzaliwp_wallet_update( $field, $value = '', $where = [] ) {
+	date_default_timezone_set( 'Asia/Tehran' );
+
 	global $wpdb, $table_prefix;
 	$table = $table_prefix . 'afzaliwp_wallet';
+	$date_time = new DateTime();
 
 	return $wpdb->update(
 		$table,
 		[
 			$field => $value,
+			'updated_at' => $date_time->format('Y-m-d H:i'),
 		],
 		$where,
 		[
