@@ -20,6 +20,7 @@ define( 'AFZ_WALLET_ASSETS_URL', plugin_dir_url( __FILE__ ) . 'assets/' );
 load_plugin_textdomain( 'afzaliwp-wallet', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 require_once __DIR__ . '/includes/models/wallet.php';
+require_once __DIR__ . '/includes/gateways/zarinpal.php';
 require_once __DIR__ . '/includes/helper.php';
 require_once __DIR__ . '/includes/load-assets.php';
 require_once __DIR__ . '/includes/admin-menu.php';
