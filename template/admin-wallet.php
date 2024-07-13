@@ -17,7 +17,8 @@ $selected_user = $data[ 'selected_user' ];
 						</label>
 						<select name="wallet-user" id="wallet-users">
 							<?php foreach ( $users as $user ) {
-								echo '<option value="' . $user->ID . '">' . $user->display_name . '</option>';
+								$balance = get_user_meta( $user->ID, 'afzaliwp_wallet_balance', true );
+								echo sprintf( '<option value="%s">%s (%s)</option>', $user->ID, $user->display_name, $balance );
 							} ?>
 						</select>
 
@@ -33,19 +34,22 @@ $selected_user = $data[ 'selected_user' ];
 						<h3><?php _e( 'Actions', 'afzaliwp-wallet' ); ?></h3>
 					</div>
 					<div class="inside">
+						<p><strong><?php echo __('Name', 'afzaliwp-wallet') . ': ' . $selected_user['ID'] .':'. $selected_user['display_name']; ?></strong></p>
+						<p><strong><?php echo __('Balance', 'afzaliwp-wallet') . ': ' . $selected_user['balance'] ?></strong></p>
 						<form action="" method="post" class="admin-edit-user-wallet-form">
-							<label for="">
+							<label for="wallet-action">
 								<?php _e( 'Action', 'afzaliwp-wallet' ); ?>
 							</label>
-							<select name="" id="">
+							<select name="wallet-action" id="wallet-action">
 								<option value="increase"><?php _e( 'Increase', 'afzaliwp-wallet' ); ?></option>
 								<option value="decrease"><?php _e( 'Decrease', 'afzaliwp-wallet' ); ?></option>
 							</select>
 
-							<?php //TODO: get step from control panel ?>
+							<input type="hidden" name="current-user-current-balance" value="<?php echo $selected_user['balance']; ?>">
+							<input type="hidden" name="current-user-id" value="<?php echo $selected_user['ID']; ?>">
 							<label>
 								<span><?php _e( 'Amount', 'afzaliwp-wallet' ); ?></span>
-								<input type="number" step="1000" value="0">
+								<input type="number" name="wallet-amount-to-change" step="1000" value="0">
 							</label>
 
 							<button name="afzaliwp-wallet-action-user"

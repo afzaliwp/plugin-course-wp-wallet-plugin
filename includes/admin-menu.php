@@ -12,6 +12,20 @@ add_action( 'admin_menu', function () {
 } );
 
 function afzaliwp_wallet_admin_menu_callback() {
+	if ( isset( $_POST['afzaliwp-wallet-action-user'] ) ) {
+		$current_balance = $_POST['current-user-current-balance'];
+		$user_id = $_POST['current-user-id'];
+		$balance_change = intval( $_POST['wallet-amount-to-change'] );
+		$action = $_POST['wallet-action'];
+
+		if ( 'increase' === $action ) {
+			update_user_meta( $user_id, 'afzaliwp_wallet_balance', $current_balance + $balance_change );
+		}
+		if ( 'decrease' === $action ) {
+			update_user_meta( $user_id, 'afzaliwp_wallet_balance', $current_balance - $balance_change );
+		}
+	}
+
 	$data = [
 		'users'         => afzaliwp_get_users(),
 		'selected_user' => afzaliwp_get_selected_user(),

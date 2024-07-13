@@ -89,7 +89,7 @@ function afzaliwp_wallet_create_payment( $amount, $description ) {
 function afzaliwp_wallet_verify_payment( $authority ) {
 	$info         = afzaliwp_wallet_get_gateway_info();
 	$messages     = afzaliwp_wallet_get_gateway_messages();
-	$payment_data = afzaliwp_wallet_get( 'payment_info', $authority );
+	$payment_data = afzaliwp_wallet_get( 'payment_info', $authority, true );
 
 	$payload = [
 		'merchant_id' => $info[ 'merchant' ],
