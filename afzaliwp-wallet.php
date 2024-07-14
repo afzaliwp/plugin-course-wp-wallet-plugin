@@ -24,6 +24,7 @@ require_once __DIR__ . '/includes/gateways/zarinpal.php';
 require_once __DIR__ . '/includes/helper.php';
 require_once __DIR__ . '/includes/load-assets.php';
 require_once __DIR__ . '/includes/admin-menu.php';
+require_once __DIR__ . '/includes/woocommerce/checkout.php';
 
 //Loading shortcodes
 if ( ! is_admin() ) {
